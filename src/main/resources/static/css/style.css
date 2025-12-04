@@ -3,24 +3,95 @@
     width: 1440px;
     margin: 0 auto;
     background-color: black;
+    overflow: hidden;
+    position: relative;
 }
 section{
-    height: 850px;
+    height: 925px;
 }
 .signup {
-    margin-top: 87px;
-    margin-bottom: 87px;
+    margin-top: 85px;
     border-start-start-radius: 60px;
     border-end-start-radius: 60px;
     background-color: #ffffff;
+    position: relative;
+    z-index: 2;
 }
 header{
-    height: 165px;
+    height: 155px;
 }
 .signupBox{
+    margin-left: 80px;
     height: 600px;
     width: 550px;
     background-color: #ffffff;
     border-radius: 60px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 12px rgba(0.25, 0.25, 0.25, 0.25);
+}
+.btn{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 56px;
+}
+.form-control {
+    border-radius: 10px;
+    height: 56px;
+}
+.purple {
+    color: rebeccapurple;
+}
+
+.signup {
+    position: relative;
+    z-index: 2;
+}
+
+.photo-stack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.photo-card {
+    width: 305px;
+    position: absolute;
+    opacity: 0.9;
+    border-radius: 14px;
+}
+
+.photo-card:nth-child(1) {
+    top: -90px;
+    left: -40px;
+    transform: rotate(-35deg);
+}
+
+.photo-card:nth-child(2) {
+    top: 295px;
+    left: 230px;
+    transform: rotate(-35deg);
+}
+
+
+.photo-card:nth-child(3) {
+    top: 320px;
+    left: -170px;
+    transform: rotate(-35deg);
+}
+
+.photo-card:nth-child(4) {
+    top: 710px;
+    left: 520px;
+    transform: rotate(-35deg);
+}
+
+.photo-card:nth-child(5) {
+    top: 710px;
+    left: 110px;
+    transform: rotate(-35deg);
 }
