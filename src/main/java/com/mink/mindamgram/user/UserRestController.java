@@ -1,10 +1,7 @@
 package com.mink.mindamgram.user;
 
 import com.mink.mindamgram.user.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,19 +18,31 @@ public class UserRestController {
 
     @PostMapping("/signup-process")
     public Map<String, String> singup(
-            @RequestParam String loginId
+            @RequestParam String signinId
             , @RequestParam String password
             , @RequestParam String name
             , @RequestParam String email){
 
         Map<String,String> resultMap = new HashMap<>();
 
-        if(userService.createUser(loginId, password, name, email)){
+        if(userService.createUser(signinId, password, name, email)){
             resultMap.put("result","success");
         }else{
             resultMap.put("result","fail");
         }
         return resultMap;
+    }
+    @GetMapping("/duplicate-id")
+    public Map<String, Boolean> isDuplicateId(@RequestParam String signinId){
+
+        Map<String,Boolean> resultMap = new HashMap<>();
+
+        if(userService.isDuplicateId(signinId)){
+            resultMap.put("isDuplicate",true);
+        }else{
+            resultMap.put("isDuplicate",false);
+        }
+        return  resultMap;
     }
 
 }

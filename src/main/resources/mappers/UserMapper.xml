@@ -6,18 +6,26 @@
         INSERT INTO
             `user`
         (
-            `login_id`
+            `signin_id`
             , `password`
             , `name`
             , `email`
         )VALUES
         (
-            #{loginId}
+            #{signinId}
             ,#{password}
             ,#{name}
             ,#{email}
 
          )
     </insert>
+    <select id="countBySigninId" parameterType="string" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            `user`
+        WHERE
+            `signin_id` = #{signinId}
+    </select>
 
 </mapper>
