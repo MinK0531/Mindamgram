@@ -41,6 +41,7 @@ header{
 }
 .purple {
     color: rebeccapurple;
+    text-decoration: underline;
 }
 
 .signup {

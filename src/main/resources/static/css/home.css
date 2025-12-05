@@ -1,0 +1,16 @@
+#wrap{
+    width: 1440px;
+    margin: 0 auto;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
+}
+header{
+    height: 175px;
+}
+.home{
+    height: 849px;
+}
+.white{
+    background-color: #ffffff;
+}

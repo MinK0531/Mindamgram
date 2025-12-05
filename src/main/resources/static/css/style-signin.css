@@ -1,0 +1,90 @@
+#wrap{
+    width: 1440px;
+    margin: 0 auto;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
+}
+section{
+    height: 1024px;
+}
+.polaroid{
+    width: 640px;
+}
+.signin{
+    width: 800px;
+}
+header{
+    margin-top: 120px;
+    height: 150px;
+}
+.white{
+    background-color: #ffffff;
+}
+.black{
+    color: #000000;
+    text-decoration: underline;
+}
+.signinBox{
+    margin-top: 50px;
+    height: 550px;
+    width: 550px;
+    border-radius: 60px;
+    box-shadow: 0 4px 12px rgba(0.25, 0.25, 0.25, 0.25);
+}
+
+.btn{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 56px;
+}
+.form-control {
+    border-radius: 10px;
+    height: 56px;
+}
+
+.purple {
+    color: rebeccapurple;
+    text-decoration: underline;
+}
+
+.photo-stack {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.photo-card {
+    width: 300px;
+    position: absolute;
+}
+
+.photo-card:nth-child(1) {
+    top: -100px;
+    left: 372px;
+}
+.photo-card:nth-child(2) {
+    top: 230px;
+    left: 30px;
+}
+
+.photo-card:nth-child(3) {
+    top: 690px;
+    left: 30px;
+}
+
+.photo-card:nth-child(4) {
+    top: 820px;
+    left: 372px;
+}
+
+.photo-card:nth-child(5) {
+    top: 360px;
+    left: 372px;
+}
+.photo-card:nth-child(6) {
+    top: -230px;
+    left: 30px;
+}
