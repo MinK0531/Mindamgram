@@ -1,0 +1,41 @@
+#wrap{
+    width: 1440px;
+    margin: 0 auto;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
+}
+header{
+    height: 175px;
+}
+.home{
+    height: 849px;
+    border-start-start-radius: 60px;
+    border-start-end-radius: 60px;
+    background-color: #ffffff;
+
+}
+.sidebar {
+    height: 849px;
+    width: 280px;
+    border-right: 3px solid #9D9D9D;
+    display: flex;
+}
+.black{
+    color: #000000;
+}
+.menu-icon {
+    margin-right: 12px;
+}
+
+.nav-link {
+    font-size: 32px;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 10px;
+    margin-top: 40px;
+    cursor: pointer;
+}
