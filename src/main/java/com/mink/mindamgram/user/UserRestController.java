@@ -45,4 +45,11 @@ public class UserRestController {
         return  resultMap;
     }
 
+    @PostMapping("/signin-process")
+    public Map<String,String> login(
+            @RequestParam String loginId,
+            @RequestParam String password){
+        // 사용자 정보 얻어오기
+    }
+
 }

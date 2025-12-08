@@ -15,6 +15,10 @@ header{
     background-color: #ffffff;
 
 }
+.main-menu{
+    height: 680px;
+    background-color: #9D9D9D;
+}
 .sidebar {
     height: 849px;
     width: 280px;
@@ -32,10 +36,5 @@ header{
     font-size: 32px;
 }
 .user-profile {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 10px;
-    margin-top: 40px;
-    cursor: pointer;
+
 }
