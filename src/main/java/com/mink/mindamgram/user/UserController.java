@@ -10,16 +10,16 @@ public class UserController {
 
     @GetMapping("/signup")
     public String signup(){
-        return "/user/signup";
+        return "user/signup";
     }
 
     @GetMapping("/signin")
     public String sigin(){
-        return "/user/signin";
+        return "user/signin";
     }
 
     @GetMapping("/home")
     public String home(){
-        return "/user/home";
+        return "user/home";
     }
 }

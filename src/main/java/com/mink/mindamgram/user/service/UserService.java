@@ -2,6 +2,7 @@ package com.mink.mindamgram.user.service;
 
 import com.mink.mindamgram.common.MD5HashingEncoder;
 import com.mink.mindamgram.common.SHA256HashingEncoder;
+import com.mink.mindamgram.user.domain.User;
 import com.mink.mindamgram.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,11 @@ public class UserService {
         }else {
             return true;
         }
+    }
+    public User getUser(String signinId, String password){
+        String encodededPassword = SHA256HashingEncoder.encode(password);
+        User user = userRepository.selectUser(signinId, encodededPassword);
+        return user;
     }
 
 }

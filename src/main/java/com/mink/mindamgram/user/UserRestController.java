@@ -44,12 +44,19 @@ public class UserRestController {
         }
         return  resultMap;
     }
+//    @PostMapping("/signin-process")
+//    public Map<String, String> signin(
+//            @RequestParam String signinId
+//            , @RequestParam String password){
+//        Map<String,String> resultMap = new HashMap<>();
+//
+//    }
 
-    @PostMapping("/signin-process")
-    public Map<String,String> login(
-            @RequestParam String loginId,
-            @RequestParam String password){
-        // 사용자 정보 얻어오기
-    }
+//    @PostMapping("/signin-process")
+//    public Map<String,String> login(
+//            @RequestParam String loginId,
+//            @RequestParam String password){
+//        // 사용자 정보 얻어오기
+//    }
 
 }

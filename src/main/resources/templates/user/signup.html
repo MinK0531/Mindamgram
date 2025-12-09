@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style-signup.css">
 </head>
@@ -38,7 +38,7 @@
                         <input type="text" class="form-control mt-3" placeholder="이름" id="nameInput">
                         <input type="text" class="form-control mt-3" placeholder="이메일" id="emailInput">
                         <button type="button" class="btn form-control mt-4" id="signupBtn">Sign up</button>
-                        <a href="#" class="d-block mt-3 purple">sign in</a>
+                        <a href="/user/signin" class="d-block mt-3 purple">sign in</a>
                     </div>
                 </div>
                 <div class="col-4"></div>
@@ -47,8 +47,8 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        let isIdAvailable = false;
-
+        var isIdAvailable = false;
+        var isDuplicateId = true;
         $("#passwordInput, #passwordConfirmInput").on("input", function() {
             let password = $("#passwordInput").val();
             let passwordConfirm = $("#passwordConfirmInput").val();
@@ -63,7 +63,6 @@
         });
 
         $("#idInput").on("input", function() {
-            isIdAvailable = false;
             $("#idDuplicateText").addClass("d-none");
             $("#idAvailableText").addClass("d-none");
         });
@@ -83,6 +82,10 @@
                alert("중복되었습니다");
                return;
            }
+            if(isDuplicateId) {
+                alert("아이디가 중복되었습니다");
+                return ;
+            }
 
            if(password == ""){
                alert("비밀번호를 입력하세요");
@@ -128,14 +131,14 @@
                 , url: "/user/duplicate-id"
                 ,data: {"signinId":id}
                 ,success: function (response) {
+                    isIdAvailable = true;
+                    isDuplicateId = response.isDuplicate;
                     if(response.isDuplicate){
                         $("#idDuplicateText").removeClass("d-none");
                         $("#idAvailableText").addClass("d-none");
-                        isIdAvailable = false;
                     }else {
                         $("#idAvailableText").removeClass("d-none");
                         $("#idDuplicateText").addClass("d-none");
-                        isIdAvailable = true;
                     }
                 }
                 , error: function (){
