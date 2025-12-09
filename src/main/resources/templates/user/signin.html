@@ -26,12 +26,12 @@
                         <img src="/img/logo.png" alt="로고">
                     </header>
                     <div class="signinBox white pl-5 pr-5 ">
-                        <label for="signinId" class="mt-5 pt-4">id</label>
-                        <input type="text" id="signinId" class="form-control" placeholder="아이디">
+                        <label for="idInput" class="mt-5 pt-4">id</label>
+                        <input type="text" id="idInput" class="form-control" placeholder="아이디">
 
                         <label class="mt-5">password</label>
-                        <input type="password" class="form-control" placeholder="비밀번호">
-                        <button type="button" class="btn form-control mt-5">Sign in</button>
+                        <input type="password" class="form-control" placeholder="비밀번호" id="passwordInput">
+                        <button type="button" class="btn form-control mt-5" id="signinBtn">Sign in</button>
                         <div class="d-flex justify-content-between align-items-end mt-3">
                             <a href="#" class="black">Forgot password?</a>
                             <a href="/user/signup" class="purple">sign up</a>
@@ -41,6 +41,41 @@
             </div>
         </section>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $("#signinBtn").on("click", function (){
+            let id = $("#idInput").val();
+            let password = $("#passwordInput").val();
+
+            if(id == ""){
+                alert("아이디를 입력하세요");
+                return;
+            }
+
+            if(password == ""){
+                alert("비밀번호를 입력하세요");
+                return;
+            }
+
+            $.ajax({
+                type: "post"
+                ,url:"/user/signin-process"
+                ,data:{"signinId":id, "password":password}
+                ,success: function (response){
+                    if(response.result == "success"){
+                        location.href = "/post/home";
+                    }else {
+                        alert("아이디와 비밀번호를 확인해 주세요");
+                    }
+                }
+                ,error: function (){
+                    alert("로그인 에러!");
+                }
+
+            });
+
+        });
+    </script>
 
 </body>
 </html>

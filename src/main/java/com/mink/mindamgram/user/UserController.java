@@ -1,5 +1,7 @@
 package com.mink.mindamgram.user;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +19,13 @@ public class UserController {
     public String sigin(){
         return "user/signin";
     }
+    @GetMapping("/signout")
+    public String signout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
 
-    @GetMapping("/home")
-    public String home(){
-        return "user/home";
+        return "redirect:/user/signin";
     }
+
+
 }

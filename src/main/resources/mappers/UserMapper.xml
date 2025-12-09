@@ -27,5 +27,21 @@
         WHERE
             `signin_id` = #{signinId}
     </select>
+    <select id="selectUser" parameterType="map"
+            resultType="com.mink.mindamgram.user.domain.User">
+        SELECT
+            `id`
+             , `signin_id`
+             ,`password`
+             , `name`
+             ,`email`
+             , `created_at`
+             , `updated_at`
+        FROM
+            `user`
+        WHERE
+            `signin_id` = #{signinId}
+          AND `password`  = #{password}
+    </select>
 
 </mapper>

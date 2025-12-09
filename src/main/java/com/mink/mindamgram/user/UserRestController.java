@@ -1,7 +1,15 @@
 package com.mink.mindamgram.user;
 
+import com.mink.mindamgram.user.domain.User;
 import com.mink.mindamgram.user.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,19 +52,27 @@ public class UserRestController {
         }
         return  resultMap;
     }
-//    @PostMapping("/signin-process")
-//    public Map<String, String> signin(
-//            @RequestParam String signinId
-//            , @RequestParam String password){
-//        Map<String,String> resultMap = new HashMap<>();
-//
-//    }
+    @PostMapping("/signin-process")
+    public Map<String, String> signin(
+            @RequestParam String signinId
+            , @RequestParam String password
+            , HttpServletRequest request){
+        User user = userService.getUser(signinId,password);
 
-//    @PostMapping("/signin-process")
-//    public Map<String,String> login(
-//            @RequestParam String loginId,
-//            @RequestParam String password){
-//        // 사용자 정보 얻어오기
-//    }
+        Map<String,String> resultMap = new HashMap<>();
+
+        if(user != null){
+            resultMap.put("result", "success");
+            HttpSession session = request.getSession();
+
+            session.setAttribute("userId",user.getId());
+            session.setAttribute("userName",user.getName());
+
+        }else {
+            resultMap.put("result", "fail");
+        }
+
+        return resultMap;
+    }
 
 }
