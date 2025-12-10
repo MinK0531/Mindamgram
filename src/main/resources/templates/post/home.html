@@ -40,8 +40,8 @@
                             <img src="/img/profilew-icon.png" alt="name" class="mt-2 ml-4 menu-icon mb-2">
                         </div>
                         <div class="col-10  d-flex flex-column justify-content-start align-items-start">
-                            <span th:text="${session.userName}" class="white font-weight-bold"></span>
-                            <span class="white text-small mb-2">Time</span>
+                            <span th:text="${session.userName}" class="id-text font-weight-bold mt-2"></span>
+                            <span class="time-text mb-2">Time</span>
                         </div>
                     </div>
                     <div class="img-box">
@@ -50,24 +50,31 @@
                     </div>
                     <div class="icon-box  d-flex">
                         <div class="d-flex justify-content-start align-items-center col-10">
-                            <button class="btn btn-link">
+                            <button class="btn btn-link p-1">
                                 <img src="/img/favoritefill-icon.png" alt="favoritefill" class="btnSize">
+<!--                                <img src="/img/favorite-icon.png.png" alt="favorite" class="btnSize">-->
                             </button>
-                            <button class="btn btn-link">
+                            <button class="btn btn-link ">
                                 <img src="/img/talk-icon.png" alt="talk">
                             </button>
-                            <button class="btn btn-link">
+                            <button class="btn btn-link p-1">
                                 <img src="/img/share-icon.png" alt="share">
                             </button>
-                            <button class="btn btn-link">
+                            <button class="btn btn-link ">
                                 <img src="/img/send-icon.png" alt="send">
                             </button>
                         </div>
-                        <div class="bg-info col-2">
-                            <button class="btn btn-link">
+                        <div class=" col-2">
+                            <button class="btn btn-link p-1">
                                 <img src="/img/save-icon.png" alt="save">
                             </button>
                         </div>
+                    </div>
+                    <div class="like bg-danger d-flex justify-content-start align-items-center">
+                        <p class="white like-text m-4">좋아요 99개</p>
+                    </div>
+                    <div class="title bg-info d-flex justify-content-start align-items-center">
+                        <span th:text="${session.userName}" class="title-text font-weight-bold"></span>
                     </div>
                 </div>
             </div>
