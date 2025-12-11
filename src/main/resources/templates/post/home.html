@@ -1,39 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>home</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/home.css">
-</head>
-<body>
-    <div id="wrap">
-        <header class="d-flex justify-content-start align-items-center ml-5">
-            <img src="/img/logoW2.png" alt="로고">
-        </header>
-        <div class="home ">
-            <aside class="sidebar">
-                <nav class="main-menu justify-content-start mt-4 mb-5">
-                    <ul class="nav flex-column font-weight-bold ml-4 mt-2">
-                        <li class="nav-item"><a href="#" class="ml-1 nav-link black"><img src="/img/home-icon.png" alt="홈" class="ml-1 menu-icon">홈</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link black"><img src="/img/search-icon.png" alt="검색" class="menu-icon">검색</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link black"><img src="/img/message-icon.png" alt="메시지" class="menu-icon">메시지</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link black"><img src="/img/favorite-icon.png" alt="알림" class="menu-icon">알림</a></li>
-                        <li class="nav-item"><a href="#" class="ml-1 nav-link black"><img src="/img/create-icon.png" alt="만들기" class="ml-1 menu-icon">만들기</a></li>
-                    </ul>
-                    <div>
-                        <a href="#" class="user-profile ml-1 nav-link black">
-                        <img src="/img/profileb-icon.png" alt="name" class=" ml-4 menu-icon">
-                        <span th:text="${session.userName}" class="font-weight-bold"></span></a>
-                    </div>
-                    <div th:if="${session.userId != null}" class="flex-column mt-2">
-                        <a href="/user/signout" class=" ml-1 logout black">로그아웃</a>
-                    </div>
-                </nav>
-            </aside>
-
-            <div class="social d-flex justify-content-center align-items-center flex-column">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+            <div  layout:fragment="contents" class="social d-flex justify-content-center align-items-center flex-column">
                 <div class="posting">
                     <div class="post-header d-flex">
                         <div class="col-2 p-2 d-flex justify-content-center align-items-center">
@@ -70,15 +40,14 @@
                             </button>
                         </div>
                     </div>
-                    <div class="like bg-danger d-flex justify-content-start align-items-center">
+                    <div class="like d-flex justify-content-start align-items-center">
                         <p class="white like-text m-4">좋아요 99개</p>
                     </div>
-                    <div class="title bg-info d-flex justify-content-start align-items-center">
-                        <span th:text="${session.userName}" class="title-text font-weight-bold"></span>
+                    <div class="title d-flex justify-content-start align-items-center ml-4">
+                        <div th:text="${session.userName}" class=" title-text font-weight-bold"></div>
+                        <div class="ml-3 title-text font-weight-bold">미리 크리스마스</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</body>
+
 </html>

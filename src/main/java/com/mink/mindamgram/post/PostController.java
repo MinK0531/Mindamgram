@@ -11,6 +11,10 @@ public class PostController {
     public String home(){
         return "post/home";
     }
+    @GetMapping("/create")
+    public String create(){
+        return "post/create";
+    }
 
 
 

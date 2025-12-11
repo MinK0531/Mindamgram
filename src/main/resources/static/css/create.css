@@ -1,0 +1,22 @@
+.new-post{
+    height: 700px;
+    width: 920px;
+}
+.image-box{
+    background-color: #ECECEC ;
+    border: 1px solid #000000;
+
+}
+.contents-box{
+    background-color: white;
+    border: ;
+}
+
+header{
+    height: 100px;
+    border-bottom: 1px solid #000000;
+}
+.contents{
+    height: 300px;
+
+}
