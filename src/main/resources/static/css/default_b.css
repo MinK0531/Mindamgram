@@ -1,0 +1,65 @@
+#wrap {
+    width: 1440px;
+    margin: 0 auto;
+    background-color: #000000;
+    overflow: hidden;
+    position: relative;
+}
+header {
+    height: 175px;
+}
+.logo-absolute-container {
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.logo-fixed-pos {
+    position: absolute;
+    z-index: 1000;
+    height: auto;
+}
+.profile {
+    width: 1160px;
+    height: 1024px;
+    border-start-start-radius: 60px;
+    border-end-start-radius: 60px;
+    background-color: #ffffff;
+    display: flex;
+
+}
+
+.main-menu {
+    height: 680px;
+}
+
+.sidebar {
+    height: 849px;
+    width: 280px;
+    display: flex;
+}
+
+.white {
+    color: #ffffff;
+}
+
+.menu-icon {
+    margin-right: 12px;
+}
+
+.nav-link {
+    font-size: 32px;
+}
+
+.user-profile {
+    margin-top: 290px;
+
+}
+
+.logout {
+    padding-left: 160px;
+    font-size: 20px;
+}
+
+
+

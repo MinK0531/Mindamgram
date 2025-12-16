@@ -1,0 +1,51 @@
+
+.social {
+    flex-grow: 1;
+    height: 849px;
+}
+
+.posting {
+    height: 650px;
+    width: 450px;
+    background-color: black;
+    border-radius: 15px;
+}
+
+.posting > .post-header {
+    height: 70px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.id-text {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.time-text {
+    color: #ffffff;
+    font-size: 15px;
+}
+.img-box{
+    height: 450px;
+    border-bottom: 1px solid #ffffff;
+}
+.icon-box{
+    height: 60px;
+}
+.btnSize{
+    width: 45px;
+}
+.like{
+    height: 25px;
+}
+.like-text{
+    color: #ffffff;
+    font-size: 15px;
+}
+.title{
+    height: 30px;
+}
+.title-text{
+    color: #ffffff;
+    font-size: 20px;
+}

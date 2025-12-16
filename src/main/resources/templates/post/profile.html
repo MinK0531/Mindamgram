@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_b}">
+
+<div layout:fragment="profile" class="profile-content">
+    <div class="profile-header d-flex align-items-center mb-4 pt-5">
+        <div class="profile-img-container ml-5 mr-5">
+            <img src="/img/profileb-icon.png" alt="프로필 사진" class="profile-image">
+        </div>
+        <div class="profile-info">
+            <h2 class="profile-username">MinK</h2>
+            <p class="profile-name">이름</p>
+            <p class="profile-posts">게시물 2</p>
+            <div class="profile-actions mt-3 d-flex">
+                <button class="btn-edit-profile mr-3">프로필 편집</button>
+                <button class="btn-edit-profile">프로필 편집</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-tabs d-flex justify-content-center border-top pt-3 pb-3">
+        <a href="#" class="tab-link active d-flex flex-column align-items-center pt-2 pr-5">
+            <img src="/img/mypost.png" alt="게시물" class="tab-icon">
+        </a>
+
+        <a href="#" class="tab-link d-flex flex-column align-items-center pr-5">
+            <img src="/img/mysave-g.png" alt="저장됨" class="tab-icon">
+        </a>
+
+        <a href="#" class="tab-link d-flex flex-column align-items-center pt-2 pr-5">
+            <img src="/img/mytag-g.png" alt="태그됨" class="tab-icon">
+        </a>
+    </div>
+
+    <div class="post-grid d-flex flex-wrap justify-content-start">
+        <div th:each="post:${postList}" class="post-item">
+            <a href="#">
+                <img th:src="${post.imagePath.startsWith('/') ? post.imagePath : '/' + post.imagePath}">
+            </a>
+        </div>
+    </div>
+
+</div>
+</html>

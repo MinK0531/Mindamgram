@@ -104,7 +104,7 @@
                 , contentType: false
                 , success: function (response){
                     if (response.result == "success"){
-                        location.href="/post/home";
+                        location.reload();
                     }else {
                         alert("작성 실패!")
                     }

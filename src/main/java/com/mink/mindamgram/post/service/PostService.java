@@ -5,7 +5,6 @@ import com.mink.mindamgram.post.domain.Post;
 import com.mink.mindamgram.post.dto.PostDetail;
 import com.mink.mindamgram.post.repository.PostRepository;
 import com.mink.mindamgram.user.domain.User;
-import com.mink.mindamgram.user.domain.User;
 import com.mink.mindamgram.user.service.UserService;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Sort;
@@ -22,8 +21,9 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserService userService;
 
-    public PostService(PostRepository postRepository){
+    public PostService(PostRepository postRepository, UserService userService){
         this.postRepository = postRepository;
+        this.userService = userService;
     }
 
     public boolean createPost(
@@ -67,5 +67,8 @@ public class PostService {
     public Post getPost(long id){
         Optional<Post> optionalPost =postRepository.findById(id);
         return optionalPost.get();
+    }
+    public List<Post> getPostListProfile(long userId) {
+        return postRepository.findByUserId(userId, Sort.by("id").descending());
     }
 }

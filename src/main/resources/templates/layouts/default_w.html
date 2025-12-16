@@ -8,8 +8,12 @@
     <title>home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/default_w.css">
     <link rel="stylesheet" href="/css/create.css">
+    <link rel="stylesheet" href="/css/posting.css">
+    <link rel="stylesheet" href="/css/profile.css">
+
+
 </head>
 
 <body>
@@ -26,10 +30,11 @@
                     <li class="nav-item"><a href="#" class="nav-link black"><img src="/img/search-icon.png" class="menu-icon">검색</a></li>
                     <li class="nav-item"><a href="#" class="nav-link black"><img src="/img/message-icon.png" class="menu-icon">메시지</a></li>
                     <li class="nav-item"><a href="#" class="nav-link black"><img src="/img/favorite-icon.png" class="menu-icon">알림</a></li>
-                    <li class="nav-item"><a href="/post/create" id="create-post-link" class="ml-1 nav-link black"><img src="/img/create-icon.png" class="menu-icon">만들기</a></li>                </ul>
+                    <li class="nav-item"><a href="/post/create" id="create-post-link" class="ml-1 nav-link black"><img src="/img/create-icon.png" class="menu-icon">만들기</a></li>
+                </ul>
 
                 <div>
-                    <a href="#" class="user-profile ml-1 nav-link black">
+                    <a href="/post/profile" class="user-profile ml-1 nav-link black">
                         <img src="/img/profileb-icon.png" class="menu-icon">
                         <span th:text="${session.userName}" class="font-weight-bold"></span>
                     </a>
