@@ -32,20 +32,63 @@
             <img src="/img/mytag-g.png" alt="태그됨" class="tab-icon">
         </a>
     </div>
-
     <div class="post-grid d-flex flex-wrap justify-content-start">
         <div class="post-grid d-flex flex-wrap justify-content-start">
             <div th:each="post:${postList}" class="post-item">
-                <a href="/post/timeline"
+                <a href="#"
                    class="post-detail-link"
                    th:data-post-id="${post.id}">
-                    <img th:src="${post.imagePath}">
+                    <img th:src="${post.imagePath.startsWith('/') ? post.imagePath : '/' + post.imagePath}">
                 </a>
             </div>
         </div>
     </div>
-
 </div>
+<script th:inline="javascript" layout:fragment="script">
+    const postListData = /*[[${postList}]]*/ [];
 
-<th:block th:replace="post/timeline :: detailPopup"></th:block>
+    $(document).on('click', '.post-detail-link', function (e) {
+        e.preventDefault();
+
+        const postId = $(this).data('post-id');
+
+        const imageSrc = $(this).find('img').attr('src');
+
+        const post = postListData.find(p => p.id == postId);
+
+        if (post) {
+
+            $('#detail-popup .detail-post-image').attr('src', imageSrc);
+
+            $('#detail-popup .detail-post-content').text(post.contents);
+
+            console.log("클릭한 게시물 ID:", postId, "내용:", post.contents);
+        } else {
+            console.error("Post not found for ID:", postId);
+        }
+
+        $('#detail-popup-overlay')
+            .css('display', 'flex')
+            .hide()
+            .fadeIn(200);
+    });
+
+    $(document).ready(function () {
+        const detailPopupOverlay = $('#detail-popup-overlay');
+        const cancelBtn = $('#detailCancelBtn');
+
+        function closeDetailPopup() {
+            detailPopupOverlay.fadeOut(200);
+        }
+
+        cancelBtn.on('click', closeDetailPopup);
+
+        detailPopupOverlay.on('click', function (e) {
+            if (e.target.id === 'detail-popup-overlay') {
+                closeDetailPopup();
+            }
+        });
+    });
+</script>
+
 </html>

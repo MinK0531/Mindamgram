@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div th:fragment="postDetailPopup">
+    <div id="detail-popup-overlay" class="detail-popup">
+        <div id="detail-popup" class="detail-post-popup">
+
+            <button class="btn btn-link p-0 post-close-btn detail-close-btn" id="detailCancelBtn">
+                <i class="bi bi-x-square post-close-icon"></i>
+            </button>
+
+            <div id="popupBody" class="post-popup-contents d-flex h-100">
+
+                <div class="detail-image-section col-7 d-flex justify-content-center align-items-center">
+                    <img src="" alt="게시물 이미지" class="detail-post-image">
+                </div>
+
+                <div class="detail-info-section col-5 d-flex flex-column p-0">
+
+                    <div class="detail-header d-flex align-items-center p-3 border-bottom">
+                        <img src="/img/profileb-icon.png" class="detail-profile-icon mr-2">
+                        <span th:text="${session.userName}" class="detail-username m-0 font-weight-bold"></span>
+                        <button class="btn btn-link ml-auto p-0 detail-options-btn"><i class="bi bi-three-dots"></i></button>
+                    </div>
+
+                    <div class="detail-comments-scroll-area flex-grow-1 p-3">
+                        <div class="detail-comment mb-2">
+                            <span class="detail-username font-weight-bold mr-1" th:text="${session.userName}"></span>
+                            <span class="detail-post-content"></span>
+                        </div>
+
+                        <div id="commentList">
+                            <div class="detail-comment text-muted small mt-2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-actions p-3 border-top">
+                        <div class="d-flex justify-content-between mb-2">
+                            <div>
+                                <button class="btn btn-link detail-action-btn p-1"><i class="bi bi-heart"></i></button>
+                                <button class="btn btn-link detail-action-btn p-1"><i class="bi bi-chat"></i></button>
+                                <button class="btn btn-link detail-action-btn p-1"><i class="bi bi-send"></i></button>
+                            </div>
+                            <button class="btn btn-link detail-action-btn p-1"><i class="bi bi-bookmark"></i></button>
+                        </div>
+                        <p class="detail-likes-count font-weight-bold small">좋아요 1,234개</p>
+                    </div>
+
+                    <div class="detail-comment-form border-top p-3 d-flex align-items-center">
+                        <textarea class="form-control detail-comment-input flex-grow-1 mr-2" rows="1" placeholder="댓글 달기..."></textarea>
+                        <button class="btn btn-link detail-post-comment-btn font-weight-bold">게시</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

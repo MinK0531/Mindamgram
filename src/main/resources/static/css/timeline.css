@@ -1,4 +1,4 @@
-.overlay  {
+.detail-popup {
     position: fixed;
     top: 0;
     right: 0;
@@ -6,10 +6,11 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1050;
+    display: none;
     justify-content: center;
     align-items: center;
 }
-.popup{
+.detail-post-popup {
     background-color: #ffffff;
     border-radius: 10px;
     width: 90%;
@@ -19,4 +20,110 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
+
+.post-popup-contents{
+    height: 100% !important;
+}
+
+/* 닫기 버튼 위치 조정 (팝업 바깥 오른쪽 상단) */
+.detail-close-btn {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    color: #ffffff;
+    font-size: 40px;
+    opacity: 0.9;
+    z-index: 1051;
+}
+.detail-close-btn i {
+    color: #ffffff;
+}
+.detail-close-btn.post-close-btn {
+    color: transparent; /* 아이콘 색상만 사용 */
+}
+
+
+/* 좌측 이미지 섹션 */
+.detail-image-section {
+    background-color: #000000;
+}
+.detail-post-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+/* 우측 정보 섹션 */
+.detail-info-section {
+    border-left: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    min-width: 350px;
+}
+
+/* 헤더 스타일 */
+.detail-header {
+    min-height: 60px;
+}
+.detail-profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.detail-options-btn {
+    color: #000000;
+    font-size: 20px;
+}
+
+
+/* 댓글 스크롤 영역 */
+.detail-comments-scroll-area {
+    overflow-y: auto;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-comment {
+    font-size: 14px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+.detail-username {
+    font-size: 14px;
+}
+
+
+/* 액션 버튼 */
+.detail-actions {
+    min-height: 100px;
+    color: #000000;
+}
+.detail-action-btn i {
+    font-size: 24px;
+    color: #000000;
+}
+.detail-likes-count {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+/* 댓글 입력 폼 */
+.detail-comment-form {
+    min-height: 50px;
+}
+.detail-comment-input {
+    border: none;
+    resize: none;
+    overflow: hidden;
+    height: 20px !important;
+    font-size: 14px;
+}
+.detail-comment-input:focus {
+    box-shadow: none;
+}
+.detail-post-comment-btn {
+    color: #000000;
+    font-size: 14px;
 }

@@ -56,7 +56,9 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</div>
+
+<th:block th:fragment="createPopupScript">
     <script th:inline="javascript">
 
         $("#image-input").on("change", function (e) {
@@ -142,6 +144,5 @@
             });
         });
     </script>
-
-</div>
+</th:block>
 </html>
