@@ -10,9 +10,8 @@
             <img src="/img/profileb-icon.png" alt="프로필 사진" class="profile-image">
         </div>
         <div class="profile-info">
-            <h2 class="profile-username">MinK</h2>
-            <p class="profile-name">이름</p>
-            <p class="profile-posts">게시물 2</p>
+            <h2 class="profile-username" th:text="${session.userName}"></h2>
+            <p class="profile-posts" th:text="|게시물 ${#lists.size(postList)}|"></p>
             <div class="profile-actions mt-3 d-flex">
                 <button class="btn-edit-profile mr-3">프로필 편집</button>
                 <button class="btn-edit-profile">프로필 편집</button>
@@ -35,12 +34,18 @@
     </div>
 
     <div class="post-grid d-flex flex-wrap justify-content-start">
-        <div th:each="post:${postList}" class="post-item">
-            <a href="#">
-                <img th:src="${post.imagePath.startsWith('/') ? post.imagePath : '/' + post.imagePath}">
-            </a>
+        <div class="post-grid d-flex flex-wrap justify-content-start">
+            <div th:each="post:${postList}" class="post-item">
+                <a href="/post/timeline"
+                   class="post-detail-link"
+                   th:data-post-id="${post.id}">
+                    <img th:src="${post.imagePath}">
+                </a>
+            </div>
         </div>
     </div>
 
 </div>
+
+<th:block th:replace="post/timeline :: detailPopup"></th:block>
 </html>

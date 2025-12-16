@@ -44,21 +44,23 @@ public class PostService {
         }
         return true;
     }
-    public List<PostDetail> getPostList(long userId){
+    public List<PostDetail> getPostList() {
 
-        List<Post> postList = postRepository.findByUserId(userId, Sort.by("id").descending());
+        List<Post> postList = postRepository.findAll(Sort.by("id").descending());
 
         List<PostDetail> postDetailList = new ArrayList<>();
-        for (Post post : postList){
+        for(Post post:postList) {
             // Post -> PostDetail
+            // 1 + N 문제  : cache
+            User user = userService.getUserById(post.getUserId());
 
-            User user  = userService.getUserById(post.getUserId());
-
-            PostDetail postDetail = PostDetail.builder().id(post.getId())
+            PostDetail postDetail = PostDetail.builder()
+                    .id(post.getId())
                     .contents(post.getContents())
                     .imagePath(post.getImagePath())
                     .userId(post.getUserId())
-                    .signinId(user.getSigninId()).build();
+                    .signinId(user.getSigninId())
+                    .build();
             postDetailList.add(postDetail);
         }
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div th:fragment="timelineContent">
+    <div class="timeline-popup-inner">
+        <img th:src="${post.imagePath}" class="timeline-image">
+        <p th:text="${post.content}"></p>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".post-detail-link").forEach(link => {
+            link.addEventListener("click", () => {
+                const postId = link.dataset.postId;
+
+                fetch(`/post/timeline?postId=${postId}`)
+                    .then(res => res.text())
+                    .then(html => {
+                        document.getElementById("timeline-popup").innerHTML = html;
+                        document.getElementById("timeline-overlay").style.display = "flex";
+                    });
+            });
+        });
+
+        document.getElementById("timeline-overlay").addEventListener("click", e => {
+            if (e.target.id === "timeline-overlay") {
+                e.target.style.display = "none";
+            }
+        });
+    });
+</script>
+
+</div>
+</html>

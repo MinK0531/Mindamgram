@@ -1,11 +1,9 @@
 package com.mink.mindamgram.post;
 
+import com.mink.mindamgram.post.domain.Post;
 import com.mink.mindamgram.post.service.PostService;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -36,4 +34,5 @@ public class PostRestController {
         }
         return resultMap;
     }
+
 }
