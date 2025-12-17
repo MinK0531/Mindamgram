@@ -21,15 +21,21 @@ public class PostController {
     }
 
     @GetMapping("/home")
-    public String home(){
+    public String home(Model model){
+        List<PostDetail> postList = postService.getPostList();
+
+        model.addAttribute("postList", postList);
+
         return "post/home";
     }
     @GetMapping("/create")
     public String create(){
         return "post/create";
     }
-    @GetMapping("/timeline")
-    public String timeline(Model model) {
+
+
+    @GetMapping("/detail_popup")
+    public String detail_popup(Model model) {
 
         List<PostDetail> postList = postService.getPostList();
 
@@ -48,7 +54,6 @@ public class PostController {
         model.addAttribute("postList", postList);
         return "post/profile";
     }
-
 
 
 }

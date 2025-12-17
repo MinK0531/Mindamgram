@@ -15,5 +15,7 @@ public class PostDetail {
     private long userId;
     private String signinId;
 
+    private int likeCount;
+
 
 }

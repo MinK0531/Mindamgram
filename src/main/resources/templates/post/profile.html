@@ -38,7 +38,7 @@
                 <a href="#"
                    class="post-detail-link"
                    th:data-post-id="${post.id}">
-                    <img th:src="${post.imagePath.startsWith('/') ? post.imagePath : '/' + post.imagePath}">
+                    <img th:src="${post.imagePath}">
                 </a>
             </div>
         </div>

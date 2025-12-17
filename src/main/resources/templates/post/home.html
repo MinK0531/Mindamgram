@@ -4,26 +4,26 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/default_w}">
 
-            <div  layout:fragment="contents" class="social d-flex justify-content-center align-items-center flex-column">
-                <div class="posting">
+            <div  layout:fragment="contents" class="social d-flex align-items-center flex-column">
+                <!--카드-->
+                <div class="posting" th:each="post:${postList}">
                     <div class="post-header d-flex">
                         <div class="col-2 p-2 d-flex justify-content-center align-items-center">
                             <img src="/img/profilew-icon.png" alt="name" class="mt-2 ml-4 menu-icon mb-2">
                         </div>
                         <div class="col-10  d-flex flex-column justify-content-start align-items-start">
-                            <span th:text="${session.userName}" class="id-text font-weight-bold mt-2"></span>
+                            <span th:text="${post.signinId}" class="id-text font-weight-bold mt-2"></span>
                             <span class="time-text mb-2">Time</span>
                         </div>
                     </div>
                     <div class="img-box">
-
-
+                        <img th:src="${post.imagePath}">
                     </div>
                     <div class="icon-box  d-flex">
                         <div class="d-flex justify-content-start align-items-center col-10">
                             <button class="btn btn-link p-1">
-                                <img src="/img/favoritefill-icon.png" alt="favoritefill" class="btnSize">
-<!--                                <img src="/img/favorite-icon.png.png" alt="favorite" class="btnSize">-->
+                                <img src="/img/favoritefill-icon.png" alt="favoritefill" class="btnSize unlike-btn d-none">
+                                <img src="/img/heart-w-icon.png" alt="favorite" class="like-btn" th:data-post-id="${post.id}">
                             </button>
                             <button class="btn btn-link ">
                                 <img src="/img/talk-icon.png" alt="talk">
@@ -42,13 +42,38 @@
                         </div>
                     </div>
                     <div class="like d-flex justify-content-start align-items-center">
-                        <p class="white like-text m-4">좋아요 99개</p>
+                        <p  th:text="|좋아요 ${post.likeCount}개|" class="white like-text m-4">좋아요 99개</p>
                     </div>
                     <div class="title d-flex justify-content-start align-items-center ml-4">
-                        <div th:text="${session.userName}" class=" title-text font-weight-bold"></div>
-                        <div class="ml-3 title-text font-weight-bold">미리 크리스마스</div>
+                        <div th:text="${post.signinId}"  class=" title-text font-weight-bold"></div>
+                        <div th:text="${post.contents}"  class="ml-3 title-text font-weight-bold">미리 크리스마스</div>
                     </div>
                 </div>
             </div>
+            <script layout:fragment="script-home">
+
+                $(".like-btn").on("click", function() {
+
+                    let postId = $(this).data("post-id");
+
+                    $.ajax({
+                        type:"post"
+                        , url:"/post/like"
+                        , data:{"postId":postId}
+                        , success:function(response) {
+                            if(response.result == "success") {
+                                location.reload();
+                            } else {
+                                alert("좋아요 실패!");
+                            }
+                        }
+                        , error:function() {
+                            alert("좋아요 에러!");
+                        }
+
+                    });
+
+                });
+            </script>
 
 </html>

@@ -55,7 +55,9 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <th:block th:replace="post/create :: createPopup"></th:block>
 
-<th:block layout:fragment="script"></th:block>
+<th:block th:replace="post/create :: createPopupScript"></th:block>
+
+<th:block layout:fragment="script-home"></th:block>
 
 </body>
 </html>

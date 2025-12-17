@@ -2,6 +2,10 @@
 .social {
     flex-grow: 1;
     height: 849px;
+    overflow-y: auto;
+    padding-top: 100px;
+    padding-bottom: 20px;
+
 }
 
 .posting {
@@ -9,6 +13,9 @@
     width: 450px;
     background-color: black;
     border-radius: 15px;
+
+    margin-bottom: 20px;
+    flex-shrink: 0;
 }
 
 .posting > .post-header {
@@ -27,13 +34,25 @@
 }
 .img-box{
     height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     border-bottom: 1px solid #ffffff;
+}
+.img-box img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 .icon-box{
     height: 60px;
 }
 .btnSize{
     width: 45px;
+}
+.like-btn{
+    width: 50px;
 }
 .like{
     height: 25px;
