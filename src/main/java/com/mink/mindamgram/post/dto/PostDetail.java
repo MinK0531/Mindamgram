@@ -16,6 +16,7 @@ public class PostDetail {
     private String signinId;
 
     private int likeCount;
+    private  boolean isLike;
 
 
 }
