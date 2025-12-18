@@ -21,13 +21,13 @@
 
                     <div class="detail-header d-flex align-items-center p-3 border-bottom">
                         <img src="/img/profileb-icon.png" class="detail-profile-icon mr-2">
-                        <span th:text="${session.userName}" class="detail-username m-0 font-weight-bold"></span>
+                        <span th:text="${session.userSigninId}" class="detail-username m-0 font-weight-bold"></span>
                         <button class="btn btn-link ml-auto p-0 detail-options-btn"><i class="bi bi-three-dots"></i></button>
                     </div>
 
                     <div class="detail-comments-scroll-area flex-grow-1 p-3">
                         <div class="detail-comment mb-2">
-                            <span class="detail-username font-weight-bold mr-1" th:text="${session.userName}"></span>
+                            <span class="detail-username font-weight-bold mr-1" th:text="${session.userSigninId}"></span>
                             <span class="detail-post-content"></span>
                         </div>
 

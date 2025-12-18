@@ -65,8 +65,9 @@ public class UserRestController {
             resultMap.put("result", "success");
             HttpSession session = request.getSession();
 
+
             session.setAttribute("userId",user.getId());
-            session.setAttribute("userName",user.getName());
+            session.setAttribute("userSigninId",user.getSigninId());
 
         }else {
             resultMap.put("result", "fail");

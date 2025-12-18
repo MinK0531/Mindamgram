@@ -10,7 +10,7 @@
             <img src="/img/profileb-icon.png" alt="프로필 사진" class="profile-image">
         </div>
         <div class="profile-info">
-            <h2 class="profile-username" th:text="${session.userName}"></h2>
+            <h2 class="profile-username" th:text="${session.userSigninId}"></h2>
             <p class="profile-posts" th:text="|게시물 ${#lists.size(postList)}|"></p>
             <div class="profile-actions mt-3 d-flex">
                 <button class="btn-edit-profile mr-3">프로필 편집</button>
