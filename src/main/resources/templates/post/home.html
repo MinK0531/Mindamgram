@@ -7,7 +7,7 @@
             <div  layout:fragment="contents" class="social d-flex align-items-center flex-column">
                 <!--카드-->
                 <div class="posting" th:each="post:${postList}">
-                    <div class="post-header d-flex">
+                    <div class="post-header border-bottom d-flex">
                         <div class="col-2 p-2 d-flex justify-content-center align-items-center">
                             <img src="/img/profilew-icon.png" alt="name" class="mt-2 ml-4 menu-icon mb-2">
                         </div>
@@ -16,14 +16,14 @@
                             <span class="time-text mb-2">Time</span>
                         </div>
                     </div>
-                    <div class="img-box">
+                    <div class="img-box border-bottom">
                         <img th:src="${post.imagePath}">
                     </div>
                     <div class="icon-box  d-flex">
                         <div class="d-flex justify-content-start align-items-center col-10">
                             <button class="btn btn-link p-1">
-                                <img src="/img/favoritefill-icon.png" alt="favoritefill" class="btnSize unlike-btn d-none">
-                                <img src="/img/heart-w-icon.png" alt="favorite" class="like-btn" th:data-post-id="${post.id}">
+                                <img th:if="${post.isLike}" src="/img/favoritefill-icon.png" alt="favoritefill" class="btnSize unlike-btn">
+                                <img  th:unless="${post.isLike}" src="/img/heart-w-icon.png" alt="favorite" class="like-btn" th:data-post-id="${post.id}">
                             </button>
                             <button class="btn btn-link ">
                                 <img src="/img/talk-icon.png" alt="talk">
@@ -44,13 +44,54 @@
                     <div class="like d-flex justify-content-start align-items-center">
                         <p  th:text="|좋아요 ${post.likeCount}개|" class="white like-text m-4">좋아요 99개</p>
                     </div>
+                    <!-- 댓글 목록 -->
                     <div class="title d-flex justify-content-start align-items-center ml-4">
                         <div th:text="${post.signinId}"  class=" title-text font-weight-bold"></div>
                         <div th:text="${post.contents}"  class="ml-3 title-text font-weight-bold">미리 크리스마스</div>
                     </div>
+                    <div class="title d-flex justify-content-start align-items-center ml-4">
+                        <div  class=" comment-text font-weight-bold"></div>
+                        <div  class="ml-3 comment-text font-weight-bold">미리 크리스마스</div>
+                    </div>
+                    <div class="border-top p-3 d-flex align-items-center justify-content-between">
+                        <input id="comment" name="comment" class=" col-9 form-control mr-4" placeholder="댓글 달기...">
+                        <div class="input-group-append col-3">
+                            <button type="button"  name="comment" class="comment-btn btn text-light font-weight-bold" th:data-post-id="${post.id}">게시</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <script layout:fragment="script-home">
+
+                $(".comment-btn").on("click", function() {
+                    let postId = $(this).data("post-id");
+                    let comment = $("#commentInput").val();
+                    alert(comment);
+
+                    let formData = new FormData();
+                    formData.append("postId",postId);
+                    formData.append("comment",comment);
+
+                    $.ajax({
+                        type:"post"
+                        , url:"/post/comment/write"
+                        , data:formData
+                        , processData: false
+                        , contentType: false
+                        , success:function(response) {
+                            if(response.result == "success") {
+                                location.reload();
+                            } else {
+                                alert("댓글 실패!");
+                            }
+                        }
+                        , error:function() {
+                            alert("댓글 에러!");
+                        }
+
+                    });
+
+                });
 
                 $(".like-btn").on("click", function() {
 

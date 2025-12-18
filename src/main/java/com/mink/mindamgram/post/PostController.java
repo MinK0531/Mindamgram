@@ -21,8 +21,11 @@ public class PostController {
     }
 
     @GetMapping("/home")
-    public String home(Model model){
-        List<PostDetail> postList = postService.getPostList();
+    public String home(
+            Model model
+            ,HttpSession session){
+        long userId = (Long) session.getAttribute("userId");
+        List<PostDetail> postList = postService.getPostList(userId);
 
         model.addAttribute("postList", postList);
 
@@ -35,9 +38,10 @@ public class PostController {
 
 
     @GetMapping("/detail_popup")
-    public String detail_popup(Model model) {
-
-        List<PostDetail> postList = postService.getPostList();
+    public String detail_popup(Model model
+            ,HttpSession session) {
+        long userId = (Long) session.getAttribute("userId");
+        List<PostDetail> postList = postService.getPostList(userId);
 
         model.addAttribute("postList", postList);
 
