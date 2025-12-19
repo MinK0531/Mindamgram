@@ -49,12 +49,14 @@
                         <div th:text="${post.signinId}"  class=" title-text font-weight-bold"></div>
                         <div th:text="${post.contents}"  class="ml-3 title-text font-weight-bold">미리 크리스마스</div>
                     </div>
-                    <div class="title d-flex justify-content-start align-items-center ml-4">
-                        <div  class=" comment-text font-weight-bold"></div>
-                        <div  class="ml-3 comment-text font-weight-bold">미리 크리스마스</div>
+                    <div class="comment-list-container">
+                        <div th:each="comment : ${post.commentList}" class="comment-row ml-5">
+                            <span th:text="${comment.signinId}" class="comment-text font-weight-bold"></span>
+                            <span th:text="${comment.comments}" class="comment-text ml-2"></span>
+                        </div>
                     </div>
                     <div class="border-top p-3 d-flex align-items-center justify-content-between">
-                        <input id="comment" name="comment" class=" col-9 form-control mr-4" placeholder="댓글 달기...">
+                        <input type="text" class="comment-input col-9 form-control mr-4" placeholder="댓글 달기...">
                         <div class="input-group-append col-3">
                             <button type="button"  name="comment" class="comment-btn btn text-light font-weight-bold" th:data-post-id="${post.id}">게시</button>
                         </div>
@@ -65,32 +67,33 @@
 
                 $(".comment-btn").on("click", function() {
                     let postId = $(this).data("post-id");
-                    let comment = $("#commentInput").val();
-                    alert(comment);
+                    let comment = $(this).closest(".border-top")
+                        .find(".comment-input")
+                        .val();
 
-                    let formData = new FormData();
-                    formData.append("postId",postId);
-                    formData.append("comment",comment);
+                    if (!comment || comment.trim() === "") {
+                        alert("댓글을 입력하세요.");
+                        return;
+                    }
 
                     $.ajax({
-                        type:"post"
-                        , url:"/post/comment/write"
-                        , data:formData
-                        , processData: false
-                        , contentType: false
-                        , success:function(response) {
-                            if(response.result == "success") {
+                        type: "post",
+                        url: "/post/comment/write",
+                        data: {
+                            postId: postId,
+                            comments: comment
+                        },
+                        success: function (response) {
+                            if (response.result === "success") {
                                 location.reload();
                             } else {
-                                alert("댓글 실패!");
+                                alert(response.errorMessage || "댓글 실패!");
                             }
-                        }
-                        , error:function() {
+                        },
+                        error: function () {
                             alert("댓글 에러!");
                         }
-
                     });
-
                 });
 
                 $(".like-btn").on("click", function() {

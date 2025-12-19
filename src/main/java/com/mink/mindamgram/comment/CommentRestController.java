@@ -18,13 +18,13 @@ public class CommentRestController {
     @PostMapping("/post/comment/write")
     public Map<String,String> writeComment(
             @RequestParam long postId
-            , @RequestParam String contents
+            , @RequestParam String comments
             , HttpSession session){
 
         long userId = (Long)session.getAttribute("userId");
 
         Map<String,String> resultMap = new HashMap<>();
-        if(commentService.createComment(postId,userId, contents)){
+        if(commentService.createComment(postId,userId, comments)){
             resultMap.put("result","success");
         } else{
             resultMap.put("result","fail");

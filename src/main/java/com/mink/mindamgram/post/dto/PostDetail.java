@@ -1,7 +1,10 @@
 package com.mink.mindamgram.post.dto;
 
+import com.mink.mindamgram.comment.dto.CommentDetail;
 import lombok.Builder;
 import lombok.Getter;
+
+import java.util.List;
 
 @Builder
 @Getter
@@ -18,5 +21,5 @@ public class PostDetail {
     private int likeCount;
     private  boolean isLike;
 
-
+    private List<CommentDetail> commentList;
 }

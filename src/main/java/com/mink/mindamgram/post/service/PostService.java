@@ -1,5 +1,7 @@
 package com.mink.mindamgram.post.service;
 
+import com.mink.mindamgram.comment.dto.CommentDetail;
+import com.mink.mindamgram.comment.service.CommentService;
 import com.mink.mindamgram.common.FileManager;
 import com.mink.mindamgram.like.service.LikeService;
 import com.mink.mindamgram.post.domain.Post;
@@ -26,6 +28,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserService userService;
     private  final LikeService likeService;
+    private final CommentService commentService;
     //
 //    public PostService(PostRepository postRepository, UserService userService,LikeService likeService){
 //        this.postRepository = postRepository;
@@ -51,6 +54,7 @@ public class PostService {
         }
         return true;
     }
+
     public List<PostDetail> getPostList(long userId) {
 
         List<Post> postList = postRepository.findAll(Sort.by("id").descending());
@@ -63,7 +67,7 @@ public class PostService {
 
             int likeCount = likeService.countByPostId(post.getId());
             boolean isLike = likeService.isLikeByPostIdAndUserId(post.getId(), userId);
-
+            List<CommentDetail> commentList = commentService.getCommentList(post.getId());
             PostDetail postDetail = PostDetail.builder()
                     .id(post.getId())
                     .contents(post.getContents())
@@ -72,6 +76,7 @@ public class PostService {
                     .signinId(user.getSigninId())
                     .likeCount(likeCount)
                     .isLike(isLike)
+                    .commentList(commentList)
                     .build();
             postDetailList.add(postDetail);
         }

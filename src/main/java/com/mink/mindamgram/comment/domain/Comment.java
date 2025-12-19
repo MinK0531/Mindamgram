@@ -10,21 +10,26 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Builder
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "`comment`")
 @Entity
+@Table(name = "`comment`")
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     private long postId;
+
     private long userId;
-    private String contents;
+
+    private String comments;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
+
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 }
