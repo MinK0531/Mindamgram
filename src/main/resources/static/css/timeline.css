@@ -26,7 +26,6 @@
     height: 100% !important;
 }
 
-/* 닫기 버튼 위치 조정 (팝업 바깥 오른쪽 상단) */
 .detail-close-btn {
     position: absolute;
     top: -40px;
@@ -40,11 +39,10 @@
     color: #ffffff;
 }
 .detail-close-btn.post-close-btn {
-    color: transparent; /* 아이콘 색상만 사용 */
+    color: transparent;
 }
 
 
-/* 좌측 이미지 섹션 */
 .detail-image-section {
     background-color: #000000;
 }
@@ -55,14 +53,12 @@
 }
 
 
-/* 우측 정보 섹션 */
 .detail-info-section {
     border-left: 1px solid #e0e0e0;
     background-color: #ffffff;
     min-width: 350px;
 }
 
-/* 헤더 스타일 */
 .detail-header {
     min-height: 60px;
 }
@@ -78,7 +74,6 @@
 }
 
 
-/* 댓글 스크롤 영역 */
 .detail-comments-scroll-area {
     overflow-y: auto;
     border-bottom: 1px solid #e0e0e0;
@@ -94,7 +89,6 @@
 }
 
 
-/* 액션 버튼 */
 .detail-actions {
     min-height: 100px;
     color: #000000;
@@ -109,7 +103,6 @@
 }
 
 
-/* 댓글 입력 폼 */
 .detail-comment-form {
     min-height: 50px;
 }

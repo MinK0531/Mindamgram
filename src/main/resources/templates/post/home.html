@@ -56,7 +56,8 @@
                         </div>
                     </div>
                     <div class="border-top p-3 d-flex align-items-center justify-content-between">
-                        <input type="text" class="comment-input col-9 form-control mr-4" placeholder="댓글 달기...">
+<!--                        겹치지 않게-->
+                        <input type="text" class="comment-input col-9 form-control mr-4" placeholder="댓글 달기..." th:id="|commentInput${post.id}|">
                         <div class="input-group-append col-3">
                             <button type="button"  name="comment" class="comment-btn btn text-light font-weight-bold" th:data-post-id="${post.id}">게시</button>
                         </div>
@@ -67,9 +68,7 @@
 
                 $(".comment-btn").on("click", function() {
                     let postId = $(this).data("post-id");
-                    let comment = $(this).closest(".border-top")
-                        .find(".comment-input")
-                        .val();
+                    let comment = $("#commentInput" + postId).val();
 
                     if (!comment || comment.trim() === "") {
                         alert("댓글을 입력하세요.");
@@ -87,7 +86,7 @@
                             if (response.result === "success") {
                                 location.reload();
                             } else {
-                                alert(response.errorMessage || "댓글 실패!");
+                                alert("댓글 작성 실패!");
                             }
                         },
                         error: function () {

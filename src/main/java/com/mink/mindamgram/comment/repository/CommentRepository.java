@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    public List<Comment> findByPostId(long postId, Sort sort);
+
+
+    public List<Comment> findByPostId(long postId);
 
 }

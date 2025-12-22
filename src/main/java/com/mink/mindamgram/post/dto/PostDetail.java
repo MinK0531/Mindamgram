@@ -1,5 +1,6 @@
 package com.mink.mindamgram.post.dto;
 
+import com.mink.mindamgram.comment.domain.Comment;
 import com.mink.mindamgram.comment.dto.CommentDetail;
 import lombok.Builder;
 import lombok.Getter;

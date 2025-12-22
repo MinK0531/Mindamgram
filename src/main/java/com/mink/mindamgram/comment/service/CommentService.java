@@ -24,18 +24,18 @@ public class CommentService {
 //    }
 
     public List<CommentDetail> getCommentList(long postId) {
-        List<Comment> commentList = commentRepository.findByPostId(postId, Sort.by("id").ascending());
-
+        List<Comment> commentList = commentRepository.findByPostId(postId);
         List<CommentDetail> commentDetailList = new ArrayList<>();
-
         for (Comment comment : commentList) {
             User user = userService.getUserById(comment.getUserId());
-            CommentDetail detail = CommentDetail.builder()
+            CommentDetail commentDetail = CommentDetail.builder()
                     .id(comment.getId())
-                    .comments(comment.getComments())
+                    .userId(comment.getUserId())
+                    .userId(comment.getUserId())
                     .signinId(user.getSigninId())
+                    .comments(comment.getComments())
                     .build();
-            commentDetailList.add(detail);
+            commentDetailList.add(commentDetail);
         }
         return commentDetailList;
     }

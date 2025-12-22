@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public class CommentDetail {
     private long id;
+    private long userId;
     private String comments;
     private String signinId;
 }
