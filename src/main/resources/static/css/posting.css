@@ -113,3 +113,11 @@
 .comment-list-container::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.7);
 }
+
+.more-btn{
+    font-size: 25px;
+    color: white;
+}
+
+
+

@@ -4,119 +4,123 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/default_w}">
 
-            <div  layout:fragment="contents" class="social d-flex align-items-center flex-column">
-                <!--카드-->
-                <div class="posting" th:each="post:${postList}">
-                    <div class="post-header border-bottom d-flex">
-                        <div class="col-2 p-2 d-flex justify-content-center align-items-center">
-                            <img src="/img/profilew-icon.png" alt="name" class="mt-2 ml-4 menu-icon mb-2">
-                        </div>
-                        <div class="col-10  d-flex flex-column justify-content-start align-items-start">
-                            <span th:text="${post.signinId}" class="id-text font-weight-bold mt-2"></span>
-                            <span class="time-text mb-2">Time</span>
-                        </div>
-                    </div>
-                    <div class="img-box border-bottom">
-                        <img th:src="${post.imagePath}">
-                    </div>
-                    <div class="icon-box  d-flex">
-                        <div class="d-flex justify-content-start align-items-center col-10">
-                            <button class="btn btn-link p-1">
-                                <img th:if="${post.isLike}" src="/img/favoritefill-icon.png" alt="favoritefill" class="btnSize unlike-btn">
-                                <img  th:unless="${post.isLike}" src="/img/heart-w-icon.png" alt="favorite" class="like-btn" th:data-post-id="${post.id}">
-                            </button>
-                            <button class="btn btn-link ">
-                                <img src="/img/talk-icon.png" alt="talk">
-                            </button>
-                            <button class="btn btn-link p-1">
-                                <img src="/img/share-icon.png" alt="share">
-                            </button>
-                            <button class="btn btn-link ">
-                                <img src="/img/send-icon.png" alt="send">
-                            </button>
-                        </div>
-                        <div class=" col-2">
-                            <button class="btn btn-link p-1">
-                                <img src="/img/save-icon.png" alt="save">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="like d-flex justify-content-start align-items-center">
-                        <p  th:text="|좋아요 ${post.likeCount}개|" class="white like-text m-4">좋아요 99개</p>
-                    </div>
-                    <!-- 댓글 목록 -->
-                    <div class="title d-flex justify-content-start align-items-center ml-4">
-                        <div th:text="${post.signinId}"  class=" title-text font-weight-bold"></div>
-                        <div th:text="${post.contents}"  class="ml-3 title-text font-weight-bold">미리 크리스마스</div>
-                    </div>
-                    <div class="comment-list-container">
-                        <div th:each="comment : ${post.commentList}" class="comment-row ml-5">
-                            <span th:text="${comment.signinId}" class="comment-text font-weight-bold"></span>
-                            <span th:text="${comment.comments}" class="comment-text ml-2"></span>
-                        </div>
-                    </div>
-                    <div class="border-top p-3 d-flex align-items-center justify-content-between">
-<!--                        겹치지 않게-->
-                        <input type="text" class="comment-input col-9 form-control mr-4" placeholder="댓글 달기..." th:id="|commentInput${post.id}|">
-                        <div class="input-group-append col-3">
-                            <button type="button"  name="comment" class="comment-btn btn text-light font-weight-bold" th:data-post-id="${post.id}">게시</button>
-                        </div>
-                    </div>
-                </div>
+<div  layout:fragment="contents" class="social d-flex align-items-center flex-column">
+    <!--카드-->
+    <div class="posting" th:each="post:${postList}">
+        <div class="post-header border-bottom d-flex">
+            <div class="col-2 p-2 d-flex justify-content-center align-items-center">
+                <img src="/img/profilew-icon.png" alt="name" class="mt-2 ml-4 menu-icon mb-2">
             </div>
-            <script layout:fragment="script-home">
+            <div class="col-9  d-flex flex-column justify-content-start align-items-start">
+                <span th:text="${post.signinId}" class="id-text font-weight-bold mt-2"></span>
+                <span class="time-text mb-2">Time</span>
+            </div>
+            <div class="col-1  d-flex justify-content-end align-items-start mt-3 mr-1">
+                <i class="bi bi-three-dots-vertical more-btn"></i>
+            </div>
 
-                $(".comment-btn").on("click", function() {
-                    let postId = $(this).data("post-id");
-                    let comment = $("#commentInput" + postId).val();
+        </div>
+        <div class="img-box border-bottom">
+            <img th:src="${post.imagePath}">
+        </div>
+        <div class="icon-box  d-flex">
+            <div class="d-flex justify-content-start align-items-center col-10">
+                <button class="btn btn-link p-1">
+                    <img th:if="${post.isLike}" src="/img/favoritefill-icon.png" alt="favoritefill" class="btnSize unlike-btn">
+                    <img  th:unless="${post.isLike}" src="/img/heart-w-icon.png" alt="favorite" class="like-btn" th:data-post-id="${post.id}">
+                </button>
+                <button class="btn btn-link ">
+                    <img src="/img/talk-icon.png" alt="talk">
+                </button>
+                <button class="btn btn-link p-1">
+                    <img src="/img/share-icon.png" alt="share">
+                </button>
+                <button class="btn btn-link ">
+                    <img src="/img/send-icon.png" alt="send">
+                </button>
+            </div>
+            <div class=" col-2">
+                <button class="btn btn-link p-1">
+                    <img src="/img/save-icon.png" alt="save">
+                </button>
+            </div>
+        </div>
+        <div class="like d-flex justify-content-start align-items-center">
+            <p  th:text="|좋아요 ${post.likeCount}개|" class="white like-text m-4">좋아요 99개</p>
+        </div>
+        <!-- 댓글 목록 -->
+        <div class="title d-flex justify-content-start align-items-center ml-4">
+            <div th:text="${post.signinId}"  class=" title-text font-weight-bold"></div>
+            <div th:text="${post.contents}"  class="ml-3 title-text font-weight-bold">미리 크리스마스</div>
+        </div>
+        <div class="comment-list-container">
+            <div th:each="comment : ${post.commentList}" class="comment-row ml-5">
+                <span th:text="${comment.signinId}" class="comment-text font-weight-bold"></span>
+                <span th:text="${comment.comments}" class="comment-text ml-2"></span>
+            </div>
+        </div>
+        <div class="border-top p-3 d-flex align-items-center justify-content-between">
+            <!--                        겹치지 않게-->
+            <input type="text" class="comment-input col-9 form-control mr-4" placeholder="댓글 달기..." th:id="|commentInput${post.id}|">
+            <div class="input-group-append col-3">
+                <button type="button"  name="comment" class="comment-btn btn text-light font-weight-bold" th:data-post-id="${post.id}">게시</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script layout:fragment="script-home">
 
-                    if (!comment || comment.trim() === "") {
-                        alert("댓글을 입력하세요.");
-                        return;
-                    }
+    $(".comment-btn").on("click", function() {
+        let postId = $(this).data("post-id");
+        let comment = $("#commentInput" + postId).val();
 
-                    $.ajax({
-                        type: "post",
-                        url: "/post/comment/write",
-                        data: {
-                            postId: postId,
-                            comments: comment
-                        },
-                        success: function (response) {
-                            if (response.result === "success") {
-                                location.reload();
-                            } else {
-                                alert("댓글 작성 실패!");
-                            }
-                        },
-                        error: function () {
-                            alert("댓글 에러!");
-                        }
-                    });
-                });
+        if (!comment || comment.trim() === "") {
+            alert("댓글을 입력하세요.");
+            return;
+        }
 
-                $(".like-btn").on("click", function() {
+        $.ajax({
+            type: "post",
+            url: "/post/comment/write",
+            data: {
+                postId: postId,
+                comments: comment
+            },
+            success: function (response) {
+                if (response.result === "success") {
+                    location.reload();
+                } else {
+                    alert("댓글 작성 실패!");
+                }
+            },
+            error: function () {
+                alert("댓글 에러!");
+            }
+        });
+    });
 
-                    let postId = $(this).data("post-id");
+    $(".like-btn").on("click", function() {
 
-                    $.ajax({
-                        type:"post"
-                        , url:"/post/like"
-                        , data:{"postId":postId}
-                        , success:function(response) {
-                            if(response.result == "success") {
-                                location.reload();
-                            } else {
-                                alert("좋아요 실패!");
-                            }
-                        }
-                        , error:function() {
-                            alert("좋아요 에러!");
-                        }
+        let postId = $(this).data("post-id");
 
-                    });
+        $.ajax({
+            type:"post"
+            , url:"/post/like"
+            , data:{"postId":postId}
+            , success:function(response) {
+                if(response.result == "success") {
+                    location.reload();
+                } else {
+                    alert("좋아요 실패!");
+                }
+            }
+            , error:function() {
+                alert("좋아요 에러!");
+            }
 
-                });
-            </script>
+        });
+
+    });
+</script>
 
 </html>
